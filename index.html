@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IoT Temperature Monitoring System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f7;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header {
+            background: #123b66;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .card {
+            background: white;
+            margin: 25px auto;
+            padding: 25px;
+            border-radius: 15px;
+            max-width: 400px;
+            box-shadow: 0 3px 10px #cccccc;
+        }
+
+        .temperature {
+            font-size: 55px;
+            font-weight: bold;
+            color: #0879c9;
+        }
+
+        .status {
+            font-size: 20px;
+            font-weight: bold;
+            color: green;
+        }
+
+        button {
+            background: #0879c9;
+            color: white;
+            border: none;
+            padding: 13px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        footer {
+            margin-top: 30px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>IoT Temperature Monitoring</h1>
+        <p>Mfumo wa Kufuatilia Joto</p>
+    </header>
+
+    <div class="card">
+
+        <h2>Joto la Mazingira</h2>
+
+        <div class="temperature">
+            <span id="temperature">28.0</span>°C
+        </div>
+
+        <p>Hali ya Mfumo:</p>
+
+        <div class="status" id="status">
+            Joto liko kawaida
+        </div>
+
+        <button onclick="updateTemperature()">
+            Pima Tena
+        </button>
+
+        <p id="time"></p>
+
+    </div>
+
+    <footer>
+        <p>IoT Project | Mfumo wa majaribio</p>
+        <p>Joto hili ni la mfano, si kipimo cha sensor halisi.</p>
+    </footer>
+
+    <script>
+        function updateTemperature() {
+
+            let temperature =
+                Math.floor(Math.random() * 16) + 20;
+
+            document.getElementById("temperature")
+                .textContent = temperature.toFixed(1);
+
+            let status =
+                document.getElementById("status");
+
+            if (temperature >= 30) {
+                status.textContent = "Joto limepanda";
+                status.style.color = "red";
+            } else {
+                status.textContent = "Joto liko kawaida";
+                status.style.color = "green";
+            }
+
+            document.getElementById("time")
+                .textContent =
+                "Muda wa jaribio: " +
+                new Date().toLocaleTimeString();
+        }
+
+        updateTemperature();
+    </script>
+
+</body>
+</html>
